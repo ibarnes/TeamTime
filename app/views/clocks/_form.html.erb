@@ -1,0 +1,28 @@
+
+<%= form_for(@clock) do |f| %>
+  <% if @clock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@clock.errors.count, "error") %> prohibited this clock from being saved:</h2>
+      <ul>
+      <% @clock.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comments, :class=>'form_label' %><br />
+    <%= f.text_area :comments , :size=>'60x10'%>
+  </div>
+
+  <div class="field">
+     <br />
+    <span class="form_label">Select the project your working on?</span><br />
+    <%= collection_select(:clock, :task_id, Task.all, :id, :title)%>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

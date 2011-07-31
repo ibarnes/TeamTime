@@ -1,0 +1,24 @@
+
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, :class=>'form_label' %><br />
+    <%= f.text_field :title, :class=>'form_text' %>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+    <input type="button" onclick="javascript:history.go(-1)" value="Cancel"/>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Log in</h1>
+
+<%if flash[:notice] != nil%>
+<div style="padding:20px;width:420px;background:#F2D4CE;color:#666;">
+<%= flash[:notice]%></div><br /><%end %>
+
+
+<%= form_tag sessions_path do %>
+  <p>
+    <%= label_tag :email, 'Email', :class => 'form_label' %><br />
+    <%= text_field_tag :email, params[:email], :class=>"form_text" %>
+  </p>
+  <p>
+    <%= label_tag :password, 'Password', :class=>"form_label"  %><br />
+    <%= password_field_tag :password, nil , :class=>"form_text" %>
+  </p>
+  <p class="button"><%= submit_tag "Log in", :class=>'button'  %></p>
+  <%= link_to "Sign up", sign_up_path %>
+<% end %>

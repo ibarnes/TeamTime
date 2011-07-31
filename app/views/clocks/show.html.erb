@@ -1,0 +1,21 @@
+
+<div class="grid_9" id="main">
+   <h3>Check <%=@clock.status%> </h3>
+  <p id="notice"><%= notice %></p>
+  
+  <div style="float:right;background: #eee;padding: 10px;">
+    <span style="font-size: 20px;color:#999;"><%=@clock.created_at.strftime("%I:%M %p") %></span>
+  </div>
+  <div class="field">
+    <%= label_tag :comments, nil,:class=>'form_label' %><br />
+    <%= text_area_tag :comments ,@clock.comments, :size=>'60x10', :readonly=>true %>
+  </div>
+  <div class="field">
+    <%= label_tag :comments, 'Project',:class=>'form_label' %><br />
+    <%=@clock.task.title%>
+
+  </div>
+
+
+
+</div>

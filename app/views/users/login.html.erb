@@ -1,0 +1,15 @@
+<h1>Login</h1>
+
+<div>
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :email, :class=>"form_label" %><br />
+    <%= f.text_field :email,:class=>"form_text" %>
+  </div>
+  <div class="field">
+    <%= f.label :password,:class=>"form_label" %><br />
+    <%= f.text_field :password,:class=>"form_text" %>
+  </div>
+   <%= f.submit "Sign in" %>
+<% end %>
+  </div>

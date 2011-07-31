@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teamtime</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+  <div style="width:100%">
+   
+    <div  id="top_nav" >
+       <div id="logo">Team Time</div>
+        <div id="user_nav">
+          <% if current_user %>
+         <%= current_user.name%> &nbsp;&nbsp;
+            <%= link_to "Log out", log_out_path, :style=>'color:#fff;' %>
+          <% else %>
+            <%= link_to "Sign up", sign_up_path, :style=>'color:#fff;' %>  &nbsp;&nbsp;
+            <%= link_to "Log in", log_in_path, :style=>'color:#fff;' %>
+          <% end %>
+        </div>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+  </div>
+    <div class="container_12"  >
+      
+      <div class="grid_12">
+
+        <div id="subTabs">
+         
+            <ul> 
+              <%
+
+              if params[:controller].to_s + '#' +params[:action].to_s != 'users#new' %>
+              <li><%= link_to 'Today',time_path  %></li>
+                <li><img src="/images/bar1.gif"></li>
+              <li><%= link_to 'My Timesheet',mytimesheet_path  %></li>
+                <li><img src="/images/bar1.gif"></li>
+                <li><%= link_to 'Team Schedule',dashboard_path  %></li>
+              <li><img src="/images/bar1.gif"></li>
+               <li><%= link_to 'Add Project'  ,tasks_path  %></li>
+              <li><img src="/images/bar1.gif"></li>
+              <%end%>
+            </ul>
+             
+      </div>
+     
+      </div>
+      <%= yield %>
+     
+    </div>
+  </body>
+</html>

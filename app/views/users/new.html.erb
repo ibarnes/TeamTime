@@ -1,0 +1,40 @@
+
+      <div class="grid_9" id="main">
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p>
+    <%= f.label :first_name, :class=>"form_label" %><br />
+    <%= f.text_field :first_name,:class=>"form_text" %>
+  </p>
+  <p>
+    <%= f.label :last_name, :class=>"form_label" %><br />
+    <%= f.text_field :last_name,:class=>"form_text" %>
+  </p>
+  <p>
+    <%= f.label :email, :class=>"form_label" %><br />
+    <%= f.text_field :email,:class=>"form_text" %>
+  </p>
+  <p>
+    <%= f.label :password,:class=>"form_label" %><br />
+    <%= f.password_field :password,:class=>"form_text" %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation,:class=>"form_label" %><br />
+    <%= f.password_field :password_confirmation,:class=>"form_text" %>
+  </p>
+  <p class="button"><%= f.submit %></p>
+<% end %>
+  </div>
+<div class="grid_2" id="sidebar"><p>Once you sign up you will be able to check in and check out. </p></div>
+      

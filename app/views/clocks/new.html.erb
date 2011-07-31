@@ -1,0 +1,34 @@
+
+<div class="grid_12" id="main">
+  <div class="wrapper">
+  <h3>Check <%=@clock.status%> </h3>
+
+
+  <% form_for @clock do |f| %>
+
+  <div style="float:right;background: #eee;padding: 10px;">
+     <span style="font-size: 20px;color:#999;"><%=Time.now.strftime("%I:%M %p") %></span>
+  </div>
+   
+   <%if @clock.in?%>
+     <%= f.label :comments, 'What task will you complete today?', :class=> 'form_label' %><br />
+   <%else%>
+     <%= f.label :comments, 'What task did you complete today?', :class=> 'form_label' %><br />
+   <%end%>
+    <%= f.text_area :comments, :size=>'60x10' %>
+    
+  <div class="field">
+     <br />
+    <span class="form_label">Select the project your working on?</span><br />
+    <%= collection_select(:clock, :task_id, Task.all, :id, :title)%>
+  </div>
+
+
+
+  <%= f.submit 'Check ' + @clock.status, :class=>'button' %>
+
+  <%end%>
+     </div>
+</div>
+
+

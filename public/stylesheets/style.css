@@ -155,7 +155,7 @@ background: #eee;
 
 #top_nav{
     background:#333;
-    height:40px;
+    height:20px;
     color:#fff;
     margin:0px auto;
     padding:20px 0;
@@ -164,7 +164,7 @@ background: #eee;
 
 #user_nav{
     float:left;
-    margin:10px 10px 0 0;
+    margin:15px 10px 0 0;
 }
 
 select{

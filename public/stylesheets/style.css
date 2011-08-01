@@ -60,6 +60,7 @@ input[type="submit"], input[type="button"]{
     width:100px;
     font-size:14px;
     color:#fff;
+    margin-top:10px;
     -webkit-box-shadow: 0 1px 2px #A6A6A6;
     -moz-box-shadow: 0 1px 2px #A6A6A6;
     display: inline-block;

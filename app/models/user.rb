@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password
   validates :password,  :presence => true, :on => :create
-  validates :email , :presence => true , :uniqueness => true
+   validates :email, :uniqueness => { :case_sensitive => false }, :presence => true, :format => {:with =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 
 
   def self.authenticate(email, password)
-    user = find_by_email(email)
+    user = find(:first, :conditions=>[ "lower(email) = ?", email.downcase ])
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else

@@ -1,4 +1,6 @@
-
+<div style="float:right;background: #eee;padding: 10px;">
+    <span style="font-size: 20px;color:#999;"><%=@clock.created_at.strftime("%I:%M %p") %></span>
+  </div>
 <%= form_for(@clock) do |f| %>
   <% if @clock.errors.any? %>
     <div id="error_explanation">

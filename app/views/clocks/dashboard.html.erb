@@ -36,7 +36,7 @@
             %>
           </td>
           <td width="250"><%=clock.task.title%></td>
-          <td width="60"></td>
+          <td width="60"><%= link_to 'View', clock_path(clock) %></td>
           <td width="60"><%= link_to 'Edit', edit_clock_path(clock) %></td>
         </tr>
       <%end%>

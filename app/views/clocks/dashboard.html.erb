@@ -37,7 +37,14 @@
           </td>
           <td width="250"><%=clock.task.title%></td>
           <td width="60"><%= link_to 'View', clock_path(clock) %></td>
-          <td width="60"><%= link_to 'Edit', edit_clock_path(clock) %></td>
+          <td width="60"><%
+              if current_user
+                if current_user == clock.user
+                %><%= link_to 'Edit', edit_clock_path(clock) %>
+          <%
+                end
+              end
+          %></td>
         </tr>
       <%end%>
   </table>

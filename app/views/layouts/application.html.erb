@@ -7,13 +7,14 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-  <div style="width:100%">
-   
-    <div  id="top_nav" >
-       <div id="logo">Team Time</div>
-        <div id="user_nav">
+    <div id="header" style="width:100%">
+
+      <div class="container_12 " id="top_nav" >
+
+        <div id="logo" class="grid_9">Team Time</div>
+        <div id="user_nav" class="grid_2" >
           <% if current_user %>
-         <%= current_user.name%> &nbsp;&nbsp;
+            <%= current_user.name%> &nbsp;&nbsp;
             <%= link_to "Log out", log_out_path, :style=>'color:#fff;' %>
           <% else %>
             <%= link_to "Sign up", sign_up_path, :style=>'color:#fff;' %>  &nbsp;&nbsp;
@@ -24,33 +25,33 @@
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% end %>
       </div>
-  </div>
-    <div class="container_12"  >
-      
-      <div class="grid_12">
-
-        <div id="subTabs">
-         
-            <ul> 
-              <%
-
-              if params[:controller].to_s + '#' +params[:action].to_s != 'users#new' %>
-              <li><%= link_to 'Today',time_path  %></li>
-                <li><img src="/images/bar1.gif"></li>
-              <li><%= link_to 'My Timesheet',mytimesheet_path  %></li>
-                <li><img src="/images/bar1.gif"></li>
-                <li><%= link_to 'Team Schedule',dashboard_path  %></li>
-              <li><img src="/images/bar1.gif"></li>
-               <li><%= link_to 'Add Project'  ,tasks_path  %></li>
-              <li><img src="/images/bar1.gif"></li>
-              <%end%>
-            </ul>
-             
-      </div>
-     
-      </div>
-      <%= yield %>
-     
     </div>
+
+    <div class="container_12"  >
+
+      <div class="grid_12" style="text-align:center;">
+      <div id="subTabs" >
+        <ul>
+          <%
+          if params[:controller].to_s + '#' +params[:action].to_s != 'users#new' %>
+            <li><%= link_to 'Today',time_path  %></li>
+            <li><img src="/images/bar1.gif"></li>
+            <li><%= link_to 'My Timesheet',mytimesheet_path  %></li>
+            <li><img src="/images/bar1.gif"></li>
+            <li><%= link_to 'Team Schedule',dashboard_path  %></li>
+            <li><img src="/images/bar1.gif"></li>
+            <li><%= link_to 'Add Project'  ,tasks_path  %></li>
+            <li><img src="/images/bar1.gif"></li>
+          <%end%>
+        </ul>
+      </div>
+
+      </div>
+
+
+      <%= yield %>
+
+    </div>
+
   </body>
 </html>

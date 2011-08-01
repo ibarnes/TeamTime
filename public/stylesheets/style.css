@@ -94,7 +94,7 @@ input[type="submit"], input[type="button"]{
 
 #subTabs ul {
     margin: 0px 0px 0px 8px;
-    padding: 8px 0px 0px 0px;
+ 
     list-style: none;
 }
 
@@ -147,10 +147,16 @@ background: #eee;
     background:#333;
 }
 #logo{
-    float:left;
-    margin-left:205px;
+   
+    padding-left:20px;
     font-size: 26px;
-    width:760px;
+  
+}
+
+#header{
+    background:#333;
+  
+
 }
 
 #top_nav{
@@ -163,8 +169,8 @@ background: #eee;
 }
 
 #user_nav{
-    float:left;
-    margin:15px 10px 0 0;
+   float: right;
+   margin-top: 10px;
 }
 
 select{

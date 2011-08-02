@@ -1,9 +1,7 @@
 
-
-  <h3>My Time</h3>
+  <h3>Users</h3>
    <% @clock_days.sort.each do |month, clocks| %>
- 
-    <h5><%= month.strftime('%b %d, %a') %></h5>
+  <h5><%= month.strftime('%b %d, %a') %></h5>
   <table class="table_data">
     <thead>
       <tr style="font-size: 14px;">
@@ -16,29 +14,30 @@
         <th></th>
       </tr>
     </thead>
-     <% for clock in clocks %>
+   
+  <% for clock in clocks %>
         <tr>
           <td width="250"><%= clock.user.name %> </td>
           <td width="150" >
-            <%=
-
-              clock.time(0).strftime("%I:%M %p")
-
-          %>
+            <%=clock.time(0).strftime("%I:%M %p")%>
           </td>
           <td width="150" >
             <%=
-            if clock.user.checkout?(clock.created_at)
-              clock.time(1).strftime("%I:%M %p")
+            if clock.nil?
+              if clock.user.checkout?(clock.created_at)
+                clock.time(1).strftime("%I:%M %p")
+              end
             end
-          %></td>
+          %>
+          </td>
           <td width="230">
             <%=
             if clock.user.doneforday?(clock.created_at)
               distance_of_time_in_words(clock.time(0) ,clock.time(1), false).sub('minutes','min')
             end
-          %>
-          </td><td width="250"><%=clock.task.title%></td>
+            %>
+          </td>
+          <td width="250"><%=clock.task.title%></td>
           <td width="60"><%= link_to 'View', clock_path(clock) %></td>
           <td width="60"><%
               if current_user
@@ -47,12 +46,9 @@
           <%
                 end
               end
-          %>
-          </td>
-
-          
+          %></td>
         </tr>
-     <%end%>
+      <%end%>
   </table>
-     
+  
     <% end %>

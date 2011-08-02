@@ -1,27 +1,35 @@
-<h1>Listing users</h1>
+<h1>Leader Board</h1>
 
-<table>
-  <tr>
-    <th>Email</th>
-    
-    <th>Active</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table_data">
+    <thead>
+      <tr style="font-size: 14px;">
+        <th width="100%">Name</th>
+        <th>Email</th>
+        <th>Entries</th>
+        <th>Score</th>
+       <%if current_user.last_name == "Barnes"%>
+        <th></th>
+        <th></th>
+        <th></th>
+         <%end%>
+      </tr>
+    </thead>
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.name %></td>
     <td><%= user.email %></td>
-   
-    <td><%= user.active %></td>
+    <td><%= Clock.where('user_id = ?',user.id).count %></td>
+    <td><%= Clock.where('user_id = ?',user.id).count  * 7%></td>
+    <%if current_user.last_name == "Barnes"%>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%end%>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+

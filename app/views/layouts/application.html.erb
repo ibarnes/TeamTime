@@ -34,14 +34,20 @@
         <ul>
           <%
           if params[:controller].to_s + '#' +params[:action].to_s != 'users#new' %>
-            <li><%= link_to 'Today',time_path  %></li>
+            <li><%= link_to "Check " + current_user.inout,time_path  %></li>
             <li><img src="/images/bar1.gif"></li>
-            <li><%= link_to 'My Timesheet',mytimesheet_path  %></li>
+            <li><%= link_to 'My Time',mytimesheet_path  %></li>
             <li><img src="/images/bar1.gif"></li>
-            <li><%= link_to 'Team Schedule',dashboard_path  %></li>
+            <li><%= link_to 'Team Time',dashboard_path  %></li>
             <li><img src="/images/bar1.gif"></li>
-            <li><%= link_to 'Add Project'  ,tasks_path  %></li>
+             <li><%= link_to 'Leaderboard'  ,users_path  %></li>
             <li><img src="/images/bar1.gif"></li>
+           <% if current_user.last_name=="Barnes"%>
+           <li><%= link_to 'Projects'  ,tasks_path  %></li>
+            <li><img src="/images/bar1.gif"></li>
+
+<%end%>
+
           <%end%>
         </ul>
       </div>

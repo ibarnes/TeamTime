@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
  
+ # GET /tasks
+  # GET /tasks.xml
+  def index
+    @users = User.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+
 
 def new
   @user = User.new

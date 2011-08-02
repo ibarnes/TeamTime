@@ -35,7 +35,7 @@
           <ul>
             <%
             if params[:controller].to_s + '#' +params[:action].to_s != 'users#new' %>
-            <%if current_user.doneforday?(Time.now)%>
+            <%if !current_user.doneforday?(Time.now)%>
               <li><%= link_to "Check " + current_user.inout,time_path  %></li>
             
               <li><img src="/images/bar1.gif"></li>

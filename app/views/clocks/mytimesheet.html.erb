@@ -28,7 +28,7 @@
           </td>
           <td width="150" >
             <%=
-            if clock.user.checkout?(clock.created_at)
+           if clock.user.doneforday?(clock.created_at)
               clock.time(1).strftime("%I:%M %p")
             end
           %></td>

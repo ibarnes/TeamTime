@@ -14,6 +14,6 @@
     <%= label_tag :password, 'Password', :class=>"form_label"  %><br />
     <%= password_field_tag :password, nil , :class=>"form_text" %>
   </p>
-  <p class="button"><%= submit_tag "Log in", :class=>'button'  %></p>
-  <%= link_to "Sign up", sign_up_path %>
+  <p class="button"><%= submit_tag "Log in", :class=>'button'  %> or <%= link_to "Sign up", sign_up_path %></p>
+  
 <% end %>

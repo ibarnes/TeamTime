@@ -12,13 +12,13 @@
         <th>End Time</th>
         <th>Hours Worked</th>
         <th>Project</th>
-        <th></th>
+       
         <th></th>
       </tr>
     </thead>
      <% for clock in clocks %>
         <tr>
-          <td width="250"><%= clock.user.name %> </td>
+          <td width="250"><%= link_to clock.user.name, clock_path(clock) %>  </td>
           <td width="150" >
             <%=
 
@@ -38,8 +38,8 @@
               distance_of_time_in_words(clock.time(0) ,clock.time(1), false).sub('minutes','min')
             end
           %>
-          </td><td width="250"><%=clock.task.title%></td>
-          <td width="60"><%= link_to 'View', clock_path(clock) %></td>
+          </td><td width="310"><%=clock.task.title%></td>
+         
           <td width="60"><%
               if current_user
                 if current_user == clock.user

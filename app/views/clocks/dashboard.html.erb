@@ -10,14 +10,14 @@
         <th>End Time</th>
         <th>Hours Worked</th>
         <th>Project</th>
-        <th></th>
+       
         <th></th>
       </tr>
     </thead>
    
   <% for clock in clocks %>
         <tr>
-          <td width="250"><%= clock.user.name %> </td>
+          <td width="250"><%= link_to clock.user.name, clock_path(clock), :style=>"text-decoration:underline;" %>  </td>
           <td width="150" >
             <%=clock.time(0).strftime("%I:%M %p")%>
           </td>
@@ -37,8 +37,8 @@
             end
             %>
           </td>
-          <td width="250"><%=clock.task.title%></td>
-          <td width="60"><%= link_to 'View', clock_path(clock) %></td>
+          <td width="310"><%=clock.task.title%></td>
+         
           <td width="60"><%
               if current_user
                 if current_user == clock.user

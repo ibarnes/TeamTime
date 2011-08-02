@@ -18,7 +18,7 @@
     </thead>
      <% for clock in clocks %>
         <tr>
-          <td width="250"><%= link_to clock.user.name, clock_path(clock) %>  </td>
+          <td width="250"><%= link_to clock.user.name, clock_path(clock), :style=>"text-decoration:underline;" %>  </td>
           <td width="150" >
             <%=
 

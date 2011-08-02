@@ -2,6 +2,7 @@ body{
 
     /*background:#D2D2D2;*/
     background: url('/images/bg-repeat.png');
+    font-family: 'Varela', sans-serif;
 }
 
 #content{

@@ -13,13 +13,19 @@ class UsersController < ApplicationController
 
 
 def new
+  
+
   @user = User.new
+  render :layout => 'signup'
+
 end
 
 def create
   @user = User.new(params[:user])
   if @user.save
-    redirect_to :controller=>'sessions' ,:action=>'new', :notice => "Signed up now sign in!"
+    session[:user_id] = @user.id
+     redirect_to :controller=>'clocks',:action=>'new', :notice => "Logged in!"
+    #redirect_to :controller=>'sessions' ,:action=>'new', :notice => "Signed up now sign in!"
   else
     render "new"
   end

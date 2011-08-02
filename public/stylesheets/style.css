@@ -201,8 +201,8 @@ background: #eee;
 }
 
 #user_nav{
-   float: right;
-   margin-top: 10px;
+   text-align: right;
+   margin-top: 3px;
 }
 
 select{

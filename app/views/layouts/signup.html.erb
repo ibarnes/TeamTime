@@ -12,8 +12,8 @@
 
       <div class="container_12 " id="top_nav" >
 
-        <div id="logo" class="grid_8">Team Time</div>
-        <div id="user_nav" class="grid_3" style="width:260px;" >
+        <div id="logo" class="grid_9">Team Time</div>
+        <div id="user_nav" class="grid_2" >
           <% if current_user %>
             <%= current_user.name%> &nbsp;&nbsp;
             <%= link_to "Log out", log_out_path, :style=>'color:#fff;' %>
@@ -37,7 +37,7 @@
             if params[:controller].to_s + '#' +params[:action].to_s != 'users#new' %>
             <%if !current_user.doneforday?(Time.now)%>
               <li><%= link_to "Check " + current_user.inout,time_path  %></li>
-            
+
               <li><img src="/images/bar1.gif"></li>
 <%end%>
 
@@ -57,10 +57,12 @@
           </ul>
         </div>
       </div>
-      <div class="grid_12" id="main">
+      <div class="grid_8" id="main">
         <div class="wrapper" style="padding: 20px 20px;">
           <%= yield %>
         </div>
+      </div>
+      <div class="grid_4">
       </div>
     </div>
 

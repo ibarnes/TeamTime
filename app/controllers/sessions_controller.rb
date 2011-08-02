@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to :controller=>'clocks',:action=>'new', :notice => "Logged in!"
     else
-      flash.now.alert = "Invalid email or password"
-      render "new"
+      redirect_to :controller=>'session',:action=>'new', :notice => "Wrong username or password!"
     end
   end
 

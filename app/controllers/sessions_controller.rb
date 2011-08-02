@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to :controller=>'clocks',:action=>'new', :notice => "Logged in!"
     else
-      redirect_to :controller=>'session',:action=>'new', :notice => "Wrong username or password!"
+      redirect_to :controller=>'sessions',:action=>'new', :notice => "Wrong username or password!"
     end
   end
 

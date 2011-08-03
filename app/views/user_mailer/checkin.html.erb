@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+
+  <%=@clock.user.name%> Checked <%=@clock.status%> and <%if @clock.in?%>will complete<%else%>completed <%end%>the following task today for <%=Task.find(@clock.task_id).title%>:<br/><br/>
+
+  <%=simple_fromat @clock.comments%>
+
+  </body>
+</html>

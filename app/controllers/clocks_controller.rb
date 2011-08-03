@@ -5,7 +5,7 @@ class ClocksController < ApplicationController
   # GET /clocks.xml
   def dashboard
  
-    @clocks = Clock.find(:all, :order => 'created_at, id', :conditions => "in_out = 0", :limit=>50)
+    @clocks = Clock.find(:all, :order => 'created_at desc, id', :conditions => "in_out = 0", :limit=>50)
     @clock_days = @clocks.group_by { |t| t.created_at.beginning_of_day }
 
     respond_to do |format|
@@ -16,7 +16,7 @@ class ClocksController < ApplicationController
 
   def mytimesheet
   
-    @clocks = Clock.find(:all, :order => 'created_at, id', :conditions => 
+    @clocks = Clock.find(:all, :order => 'created_at desc, id', :conditions =>
         "in_out = 0 and  user_id = " + current_user.id.to_s, :limit=>50)
     @clock_days = @clocks.group_by { |t| t.created_at.beginning_of_day }
 
@@ -67,14 +67,17 @@ class ClocksController < ApplicationController
     @clock.user_id = current_user.id
     if current_user.checkin?
      @clock.in_out = 1 #1 = check out, 0 = check in
+
    else
      @clock.in_out = 0
    end
 
     respond_to do |format|
       if @clock.save
+        if UserMailer.checkin(@clock).deliver
         format.html { redirect_to(mytimesheet_path, :notice => 'Saved successfully.') }
         format.xml  { render :xml => @clock, :status => :created, :location => @clock }
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @clock.errors, :status => :unprocessable_entity }

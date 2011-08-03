@@ -1,7 +1,7 @@
 
 
   <h3>My Time</h3>
-   <% @clock_days.sort.each do |month, clocks| %>
+   <% @clock_days.each do |month, clocks| %>
  
     <h5><%= month.strftime('%b %d, %a') %></h5>
   <table class="table_data">

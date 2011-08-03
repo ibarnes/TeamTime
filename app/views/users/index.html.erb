@@ -7,7 +7,7 @@
         <th>Email</th>
         <th>Entries</th>
         <th>Score</th>
-       <%if current_user.last_name == "Barnes"%>
+       <%if current_user.email == "ikebarnes@gmail.com"%>
         <th></th>
         <th></th>
         <th></th>
@@ -15,13 +15,13 @@
       </tr>
     </thead>
 
-<% @users.each do |user| %>
+<% @users.sort{ |a,b| a.clocks.size <=> b.clocks.size }.reverse.each do |user| %>
   <tr>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= Clock.where('user_id = ?',user.id).count %></td>
-    <td><%= Clock.where('user_id = ?',user.id).count  * 7%></td>
-    <%if current_user.last_name == "Barnes"%>
+    <td><%= user.clocks.count %></td>
+    <td><%= user.clocks.count  * 7%></td>
+    <%if current_user.email == "ikebarnes@gmail.com"%>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %></td>

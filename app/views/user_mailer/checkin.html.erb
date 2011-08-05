@@ -5,7 +5,7 @@
   </head>
   <body>
 
-  <%=@clock.user.name%> checked <%=@clock.status.downcase%> and <%if @clock.in?%>will complete<%else%>completed <%end%>the following task today for <%=Task.find(@clock.task_id).title%>:<br/><br/>
+  <%=@clock.user.name%><%if @clock.in?%> will complete <%else%> completed <%end%>the following task today for <%=Task.find(@clock.task_id).title%>:<br/><br/>
 
   <%=simple_format(@clock.comments)%>
 

@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
      @clock = clock
     mail(:to => 'isaac.barnes@med.navy.mil,jose.risi@med.navy.mil',
       :subject => clock.user.name + " check " + clock.status.downcase + " at " + Time.now.strftime("%I:%M %p"),
-      :from => "ikebarnes@gmail.com")
+      :from => "noreply@theteamtime.com")
   end
 end

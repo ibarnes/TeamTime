@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    first_name + ' ' + last_name
+    first_name.capitalize + ' ' + last_name.capitalize
   end
 
   def doneforday?(date) #Used to check if the person has checked in and out for the day

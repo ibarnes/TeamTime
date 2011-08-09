@@ -10,12 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110730140907) do
+ActiveRecord::Schema.define(:version => 20110809130330) do
 
   create_table "clocks", :force => true do |t|
     t.integer  "in_out"
     t.integer  "user_id"
-    t.string   "comments"
+    t.text     "comments",   :limit => 255
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
